@@ -21,4 +21,4 @@ jobs:
         path: "~/.cache/bazel"
         key: bazel
     - name: Run unit tests
-      run: bazel test //square:test --cxxopt="-std=c++17"
+      run: bazel test //square:test --cxxopt="-std=c++17 -ldl"

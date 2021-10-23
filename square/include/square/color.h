@@ -1,5 +1,8 @@
 #pragma once
 
+/*!
+ * @brief RGBA color structure
+ */
 struct Color
 {
     double r, g, b, a;

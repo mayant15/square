@@ -14,10 +14,10 @@ namespace sq
     template <class OuterFunction, class... Functions>
     inline const auto compose(const OuterFunction &outer, Functions... funcs)
     {
-        return [](const auto... args)
+        return [&](const auto... args)
         {
-            return std::invoke(outer, std::invoke(compose(... funcs), ... args));
-        }
+            return std::invoke(outer, std::invoke(compose(funcs...), args...));
+        };
     }
 
     /*!

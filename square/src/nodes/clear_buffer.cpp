@@ -9,4 +9,18 @@ namespace sq
         glClear(GL_COLOR_BUFFER_BIT);
         return instance;
     }
+
+    // TODO: OpenGL test cases
+
+    // TEST_CASE("clear_color_buffer")
+    // {
+    //     SUBCASE("return instance unchanged")
+    //     {
+    //         Instance instance{};
+    //         instance.height = 100;
+    //         const auto &other = clear_color_buffer(instance);
+    //         CHECK(other.height == 100);
+    //     }
+    // }
+
 } // namespace sq

@@ -5,6 +5,8 @@
 
 #include "glad/glad.h"
 
-#ifdef SQ_BUILD_TEST
-#include "doctest.h"
+#ifndef SQ_BUILD_TEST
+#define DOCTEST_CONFIG_DISABLE
 #endif
+
+#include "doctest.h"

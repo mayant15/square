@@ -6,7 +6,6 @@ cc_library(
         "include/square/detail/glad/glad.h",
     ],
     includes = ["include/square/detail"],
-    # visibility = ["//examples/dev:__pkg__"],
 )
 
 cc_library(
@@ -18,9 +17,11 @@ cc_library(
     visibility = ["//examples/dev:__pkg__"],
 )
 
+# Basically same as above just add doctest.cpp and define the config macro
 cc_test(
     name = "test",
-    srcs = glob(["test/**/*.cpp"]),
+    srcs = glob(["src/**/*.cpp", "include/**/*.h", "test/doctest.cpp"]),
+    includes = ["include"],
+    deps = [":glad"],
     defines = ["SQ_BUILD_TEST"],
-    deps = [":square"],
 )

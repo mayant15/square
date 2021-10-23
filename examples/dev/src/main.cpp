@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-#include <glad/glad.h>
+// IMPORTANT: Square includes glad, so include before GLFW
+#include <square/square.h>
 #include <GLFW/glfw3.h>
 
 #include "constants.h"
@@ -53,8 +54,24 @@ int main()
         return EXIT_FAILURE;
     }
 
-    // Set viewport dimensions
-    glViewport(0, 0, WIDTH, HEIGHT);
+    /**************************************************************************
+     * Pure land, prepare the render pipeline
+     *************************************************************************/
+
+    sq::InitOptions op{};
+    op.height = HEIGHT;
+    op.width = WIDTH;
+    op.clearColor = {0.2f, 0.3f, 0.3f, 1.0f};
+
+    const auto instance = sq::create_instance(op);
+
+    const auto render = sq::compose(sq::clear_color_buffer);
+
+    /**************************************************************************
+     * Impure land, the main loop and actually triggering the render function
+     *************************************************************************/
+
+    sq::set_viewport(0, 0, WIDTH, HEIGHT);
 
     // Main loop
     while (!glfwWindowShouldClose(window))
@@ -62,9 +79,8 @@ int main()
         // Poll for input events
         glfwPollEvents();
 
-        // Clear the colorbuffer
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        // Trigger the render pipeline
+        render(instance);
 
         // Swap buffers
         glfwSwapBuffers(window);

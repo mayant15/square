@@ -1,6 +1,10 @@
+#pragma once
+
 #include "detail/base.h"
 
-namespace sq
-{
-    std::string greet();
-} // namespace sq
+#include "functional.h"
+#include "color.h"
+#include "instance.h"
+#include "util.h"
+
+#include "nodes/clear_buffer.h"

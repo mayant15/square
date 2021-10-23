@@ -21,4 +21,4 @@ jobs:
         path: "~/.cache/bazel"
         key: bazel
     - name: Run unit tests
-      run: bazel //square:test
+      run: bazel test //square:test

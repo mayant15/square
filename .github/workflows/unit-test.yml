@@ -13,12 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Bazelisk
-      uses: bazelbuild/setup-bazelisk@v1.0.1
-    - name: Mount bazel cache
-      uses: actions/cache@v2
-      with:
-        path: "~/.cache/bazel"
-        key: bazel
-    - name: Run unit tests
-      run: bazel //square:test
+    - name: Get Dependencies
+      run: sudo apt install xorg-dev
+    - name: CMake Configure
+      run: mkdir build && cd build && cmake ..
+    - name: CMake Build
+      run: cd build && cmake --build .
+    - name: Run Tests
+      run: ./build/square/square-test

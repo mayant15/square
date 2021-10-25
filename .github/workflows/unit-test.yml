@@ -18,6 +18,6 @@ jobs:
     - name: CMake Configure
       run: mkdir build && cd build && cmake ..
     - name: CMake Build
-      run: cmake --build .
+      run: pwd && cd build && cmake --build .
     - name: Run Tests
       run: ./square/square-test

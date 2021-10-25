@@ -3,10 +3,10 @@
 #include <string>
 #include <functional>
 
-#include "glad/glad.h"
+#include <glad/glad.h>
 
 #ifndef SQ_BUILD_TEST
 #define DOCTEST_CONFIG_DISABLE
 #endif
 
-#include "doctest.h"
+#include <square/detail/doctest.h>
